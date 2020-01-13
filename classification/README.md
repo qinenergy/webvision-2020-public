@@ -5,7 +5,7 @@ Development kit for the 2020 Visual Understanding by Learning from Web Data (Web
 ## Downloading Data
 We have provided a download + preprocess(python3) script for this.
 ```
-cd download
+cd data
 bash download.sh
 ```
 Note that the server hosting Webvision Data reboots every day at midnight (Zurich time). You might want to change wget to something else (aria2c for example). 
@@ -31,8 +31,9 @@ dir/
 Following the setting for ImageNet in tensorpack, we use 4 GPUS with the batch size being set to 64x4=256. Run the following script to train the model, 
 ```
 cd benchmark
+pip3 install tensorflow-gpu==1.5.0
 pip3 install tensorpack==0.9.1
-python3 ./imagenet-resnet.py --data /raid/webvision2018/ --gpu 0,1,2,3 -d 50 --mode resnet
+python3 ./imagenet-resnet.py --data ./data/ --gpu 0,1,2,3 -d 50 --mode resnet
 ```
 
 ## Pretrained models
@@ -61,7 +62,7 @@ All models are trained from scratch using solely Webvision data.
 To generate the prediction files for CodaLab submissions, assume testimages are stored in the above format in /raid/webvision2018_test/val/:
 ```
 cd benchmark
-python3 ./imagenet-resnet.py --data /raid/webvision2018_test/ -d 50 --mode resnet --eval --load train_log/imagenet-resnet-d50-webvision2018-200epochs/model-1055000
+python3 ./imagenet-resnet.py --data ./data/webvision2018_test/ -d 50 --mode resnet --eval --load train_log/imagenet-resnet-d50-webvision2018-200epochs/model-1055000
 
 # Preparing the submission file
 python3 utils/json2sub.py
@@ -72,7 +73,7 @@ python3 utils/json2sub.py
 Note that the error rate in the above figure is calculated directly over validation set (without averaging over class), and thus not the same metric used by the evaluation system.
 
 ## Dependencies
-+ Tensorflow
++ Tensorflow 1.X
 + Tensorpack
 + opencv-python
 
