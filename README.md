@@ -5,12 +5,8 @@ Development kit for the 2020 Visual Understanding by Learning from Web Data (Web
 Please see the [main website](https://www.vision.ee.ethz.ch/webvision/challenge.html) and the [submission system](https://competitions.codalab.org/competitions) for competition details, rules and dates.
 
 You can find the development kits for the two competition tracks by following these links:
-## Track 1: WebVision Image Classification Task
-You can find the development kit for this competition track in the [link](https://github.com/qinenergy/webvision-2020-public/classification)
-
-
-## Track 2: WebVision Task on Mining YouTube Dataset
-You can find the development kit for this competition track in the [link](https://github.com/hildekuehne/Weak_YouTube_dataset).
+## [Track 1: WebVision Image Classification Task](https://github.com/qinenergy/webvision-2020-public/classification)
+## [Track 2: WebVision Task on Mining YouTube Dataset](https://github.com/hildekuehne/Weak_YouTube_dataset)
 
 
 ## Others
