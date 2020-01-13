@@ -1,8 +1,6 @@
 # WebVision 2020: The 4th Challenge on Visual Understanding by Learning from Web Data
 
-Development kit for the 2020 Visual Understanding by Learning from Web Data (WebVision) Challenge. 
-
-In this repository, you can find the information you need to participate in the challenge. This includes instructions to download the data, run and eval a baseline model. 
+Development kit for the 2020 Visual Understanding by Learning from Web Data (WebVision) Challenge. In this repository, you can find the information you need to participate in the challenge. This includes instructions to download the data, run and eval a baseline model. 
 
 Please see the [main website](https://www.vision.ee.ethz.ch/webvision/challenge.html) and the [submission system](https://competitions.codalab.org/competitions) for competition details, rules and dates.
 
