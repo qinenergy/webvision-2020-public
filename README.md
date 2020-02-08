@@ -6,7 +6,7 @@ Please see the [main website](https://www.vision.ee.ethz.ch/webvision/challenge.
 
 You can find the development kits for the two competition tracks by following these links:
 ## [Track 1: WebVision Image Classification Task](./classification)
-## [Track 2: WebVision Task on Mining YouTube Dataset](https://github.com/hildekuehne/Weak_YouTube_dataset)
+## [Track 2: WebVision Task on Mining YouTube Dataset](./videolearning)
 
 
 ## Others
