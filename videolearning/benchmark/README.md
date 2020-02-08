@@ -14,7 +14,7 @@ https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/test
 
 The training is run by the function 
 
-./train_multic_webvisionTest.py
+./src/train_multic_webvisionTest.py
 
 The dataset needs ~150GB memory + some overhead in case you want to balance the training data. As not all systems provide this memory, we provide a full and a sparse data loader
 
@@ -35,7 +35,7 @@ As the original distribution of the training data is highly imbalanced, it is re
 
 The test function expects a score between [0,..,1] for each class for each frame of the video. You can compute output probabilities with the function:
 
-./mp_save_probs_webvisionTest.py
+./src/mp_save_probs_webvisionTest.py
 
 #### Use softmax?
 
@@ -52,11 +52,16 @@ You can also use the ouput of that function for the challenge submission.
 
 ## Testing
 
+
 Annotation by natural language can be very inconsistent and even contradicting, e.g. we have three different classes "whisk_egg", "beat_egg", and "mix_egg", which obviously all refer to the same action and we have other classes such as "add_pepper" which can refer to the bell pepper as well as to grounded pepper powder.
 
 It is therefore difficult to assess the classification by just comparing the max score label to the annotated one as nobody knows if the annotator was more a "whisk_egg", "beat_egg", or "mix_egg" type of person.
 
 We therefore decided to resort to the task of video alignment. Here, the transcripts of the actions ( i.a. the action labels in the right order) are already given and the task is to find the right boundaries for the given actions in the video. We know from pervious work on weak learning for video sequences (see e.g. https://ieeexplore.ieee.org/document/8585084, https://arxiv.org/abs/1610.02237) that this task is usually a good surrogate for the overall classification accuracy. In this case it helps to avoid any language inconsistencies as it aligns the output to the correct action labels only and ignores the rest. It is therefore not so important which score was give to "mix_egg" or "beat_egg", as only the scores of the class "whisk_egg" would be considered (if this was the annotation).
+
+For testing please run the function:
+
+./src/test_multic_webvisionTest.py
 
 We measure accuracy as intersection over union (Jaccard IoU), by first computing the framewise IoU of all classes and take the mean over all present classes as IoU for each video. The final score is computed as mean over all video IoUs.  
 
