@@ -32,12 +32,9 @@ The data folder comprises explanation and the download script for the challenge 
 
 The challenge data did a bit better in our first vanilla test than the original test dataset, but results are comparable. It can be expected that whatever worked on the original test data, will also work on the challenge data.
 
-Please find a comparision of the vanilla system on the dataset test data and the challenge test data here (50 epochs, 2048 dim embedding layer):
+To give you and idea how the the dataset test data and the challenge test data compare on the vanilla benchmark, we run a short evaluation with the same model on both data (trained over 50 epochs, 2048 dim embedding layer):
 
-
-![Comparison of test data and challenge data](https://hildekuehne.github.io/img/comp_test_challenge.png)
-
-
+![Comparison](https://hildekuehne.github.io/img/comp_test_challenge.png)
 
 ## Submission
 
