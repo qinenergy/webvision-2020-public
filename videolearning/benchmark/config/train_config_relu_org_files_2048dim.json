@@ -23,7 +23,7 @@
   "sparse_num_frames": 50000,
   "log": "DEBUG",
   "log_str": "",
-  "prefix": "sparse.",
+  "prefix": "model_",
   "test_epoch": 0,
   "get_cond_probs": 1,
   "out_probs": "/your/path/here/test_out/out_probs_dim2048_100_0",

@@ -30,6 +30,15 @@ The benchmark comprises a vanilla baseline implementation of the training and ev
 
 The data folder comprises explanation and the download script for the challenge test data.
 
+The challenge data did a bit better in our first vanilla test than the original test dataset, but results are comparable. It can be expected that whatever worked on the original test data, will also work on the challenge data.
+
+Please find a comparision of the vanilla system on the dataset test data and the challenge test data here (50 epochs, 2048 dim embedding layer):
+
+
+![Comparison of test data and challenge data](https://hildekuehne.github.io/img/comp_test_challenge.png)
+
+
+
 ## Submission
 
 Details for submission will the announced!

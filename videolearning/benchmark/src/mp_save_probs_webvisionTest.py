@@ -45,6 +45,7 @@ class SaveProbsMP:
         with torch.no_grad():
             output = self.model(features).numpy()
 
+        # compute softmax for linear output ... remove this if neede
         output = self.softmax(output)
 
         if self.config["get_cond_probs"] > 0:
@@ -129,6 +130,7 @@ if __name__ == '__main__':
     with open('../config/train_config_relu_org_files_2048dim.json') as config_file:
         config = json.load(config_file)
 
+    # sample code for computing output probabilities for every two epochs int the range of 0-50
     len_last_str = 2
     for i in range(0, 50, 2):
         config["test_epoch"] = i

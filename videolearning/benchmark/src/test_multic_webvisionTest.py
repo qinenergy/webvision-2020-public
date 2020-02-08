@@ -16,7 +16,6 @@ from utils.utils import logger_setup
 from viterbi_utils.grammar import PathGrammar
 from viterbi_utils.length_model import FlatModel
 from viterbi_utils.viterbi import Viterbi
-from datasets.test_ds_new import TestDataset
 from utils.utils import dir_check, join_return_stat, parse_return_stat
 
 
@@ -68,14 +67,14 @@ if __name__ == '__main__':
     with open('../config/train_config_relu_org_files_2048dim.json') as config_file:
         config = json.load(config_file)
 
+    # sample code for computing segmentation and accuracy for every two epochs int the range of 0-50
     all_res = []
-    all_res2 = []
     len_last_str = 2
     for i in range(0, 50, 2):
         config["test_epoch"] = i
         config["out_probs"]= config["out_probs"][:-len_last_str]+"_" + str(i)
-        config["out_segmentation"] = config["out_segmentation"][:-len_last_str]+"_" + str(i)
         print(config["out_probs"])
+        config["out_segmentation"] = config["out_segmentation"][:-len_last_str]+"_" + str(i)
         print(config["out_segmentation"])
         len_last_str = len("_" + str(i))
 
@@ -92,23 +91,25 @@ if __name__ == '__main__':
                     label2idx[line.split()[1]] = int(line.split()[0])
                     idx2label[int(line.split()[0])] = line.split()[1]
 
-        file_list = []
+        file_list_gt = []
+        if config["gt"] != '':
+            for file in glob.glob(ops.join(config["gt"], "*.txt")):
+                file_list_gt.append(file)
+
+        logger.debug('Found ' + str(len(file_list_gt)) + ' data files in ' + config["gt"] + '... ')
+
+        file_list_probs = []
         if config["out_probs"] != '':
             for file in glob.glob(ops.join(config["out_probs"], "*.npy")):
-                file_list.append(file)
+                file_list_probs.append(file)
 
-        logger.debug('Found ' + str(len(file_list)) + ' data files in ' + config["out_probs"] + '... ')
+        logger.debug('Found ' + str(len(file_list_probs)) + ' data files in ' + config["out_probs"] + '... ')
 
-        dataset = TestDataset(config)
-        labels_all = []
-        video_gt_all = []
         mean_iou = []
-        for video_idx, video_name in enumerate(dataset.names):
-            logger.debug(video_idx)
+        for video_name in file_list_gt:
             video_name = ops.splitext(video_name)[0]
+            logger.debug(video_name)
             labels, video_gt = test(config, video_name, label2idx, idx2label)
-            labels_all.append(labels)
-            video_gt_all.append(video_gt)
 
             # compute framewise IoU for all classes in this video
             unique_classes = np.unique(video_gt)
