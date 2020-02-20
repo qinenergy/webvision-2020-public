@@ -12,7 +12,8 @@ You can find the development kits for the two competition tracks by following th
 ## [Track 2: WebVision Task on Mining YouTube Dataset](./videolearning)
 + [Chllenge website](https://hildekuehne.github.io/projects/Webvision_CVPR2020/index.html)
 + [Submission System: Raw video Based](https://competitions.codalab.org/competitions/)
-+ [Submission System: Feature Based](./videolearning)
++ [Submission System: Feature Based](https://competitions.codalab.org/competitions/)
++ [Dev Kit](./videolearning)
 
 ## Others
 If you find any bugs please open an issue.
