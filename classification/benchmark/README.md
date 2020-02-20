@@ -5,7 +5,7 @@
 The data directory should be prepared following the structure stated in this [link](https://tensorpack.readthedocs.io/modules/dataflow.dataset.html#tensorpack.dataflow.dataset.ILSVRC12). 
 We have provided a download + preprocess script for this.
 ```
-cd utils
+cd ../data
 bash download.sh
 ```
 Note that the server hosting Webvision Data reboots every day at midnight (Zurich time). You might want to change wget to something else. 
