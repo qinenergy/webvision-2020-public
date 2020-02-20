@@ -5,7 +5,7 @@ Development kit for the 2020 Visual Understanding by Learning from Web Data (Web
 ## Downloading Data
 We have provided a download + preprocess(python3) script for this.
 ```
-cd data
+cd ../data
 bash download.sh
 ```
 Note that the server hosting Webvision Data reboots every day at midnight (Zurich time). You might want to change wget to something else (aria2c for example). 
