@@ -6,10 +6,13 @@ Please see the [main website](https://www.vision.ee.ethz.ch/webvision/challenge.
 
 You can find the development kits for the two competition tracks by following these links:
 ## [Track 1: WebVision Image Classification Task](./classification)
++ [Chllenge website](https://www.vision.ee.ethz.ch/webvision/challenge.html)
 + [Submission System](https://competitions.codalab.org/competitions/23162)
++ [Dev Kit](./classification)
 ## [Track 2: WebVision Task on Mining YouTube Dataset](./videolearning)
++ [Chllenge website](https://hildekuehne.github.io/projects/Webvision_CVPR2020/index.html)
 + [Submission System: Raw video Based](https://competitions.codalab.org/competitions/)
-+ [Submission System: Feature Based](https://competitions.codalab.org/competitions/)
++ [Submission System: Feature Based](./videolearning)
 
 ## Others
 If you find any bugs please open an issue.
