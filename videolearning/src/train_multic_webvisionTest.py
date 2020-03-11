@@ -26,7 +26,7 @@ if __name__ == '__main__':
     # read label2index mapping and index2label mapping
     label2idx = dict()
     idx2label = dict()
-    with open(os.path.join('../data/mapping_without_meta.txt'), 'r') as f:
+    with open(os.path.join(config["label_idx_file"]), 'r') as f:
         content = f.read().split('\n')[0:-1]
         for line in content:
             if len(line) > 2:

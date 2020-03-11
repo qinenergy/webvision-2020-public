@@ -20,6 +20,7 @@ from utils.utils import dir_check, join_return_stat, parse_return_stat
 
 
 def test(config, video_name, label2idx, idx2label):
+    print(config["out_probs"], video_name)
     probs = np.load(ops.join(config["out_probs"], video_name + '.npy'))
     if np.min(probs) == 0:
         probs[probs == 0] = np.inf
@@ -64,10 +65,11 @@ def test(config, video_name, label2idx, idx2label):
 
 
 if __name__ == '__main__':
+
     with open('../config/train_config_relu_org_files_2048dim.json') as config_file:
         config = json.load(config_file)
 
-    # sample code for computing segmentation and accuracy for every two epochs int the range of 0-50
+    # sample code for computing segmentation and accuracy for every 2 epochs int the range of 0-50
     all_res = []
     len_last_str = 2
     for i in range(0, 50, 2):
@@ -94,6 +96,7 @@ if __name__ == '__main__':
         file_list_gt = []
         if config["gt"] != '':
             for file in glob.glob(ops.join(config["gt"], "*.txt")):
+                file = ops.basename(file)
                 file_list_gt.append(file)
 
         logger.debug('Found ' + str(len(file_list_gt)) + ' data files in ' + config["gt"] + '... ')
@@ -101,6 +104,7 @@ if __name__ == '__main__':
         file_list_probs = []
         if config["out_probs"] != '':
             for file in glob.glob(ops.join(config["out_probs"], "*.npy")):
+                file = ops.basename(file)
                 file_list_probs.append(file)
 
         logger.debug('Found ' + str(len(file_list_probs)) + ' data files in ' + config["out_probs"] + '... ')

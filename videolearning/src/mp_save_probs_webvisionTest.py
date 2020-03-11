@@ -12,7 +12,7 @@ import os.path as ops
 
 import numpy as np
 import torch
-from datasets.test_ds_new import TestDataset
+from datasets.test_ds_hdf import TestDataset
 from net_utils import mlp
 from net_utils.training_network import load_model
 from utils.logging_setup import logger
@@ -127,16 +127,21 @@ def save(config):
 
 if __name__ == '__main__':
 
+    # load config file
     with open('../config/train_config_relu_org_files_2048dim.json') as config_file:
         config = json.load(config_file)
+    print(config["out_probs"])
+    logger_setup(config)
 
     # sample code for computing output probabilities for every two epochs int the range of 0-50
     len_last_str = 2
     for i in range(0, 50, 2):
         config["test_epoch"] = i
         config["out_probs"]= config["out_probs"][:-len_last_str]+"_" + str(i)
-        print(config["out_probs"])
+        config["out_segmentation"] = config["out_segmentation"][:-len_last_str]+"_" + str(i)
         len_last_str = len("_" + str(i))
+
         logger_setup(config)
         save_mp(config)
+
     print('Done!')
