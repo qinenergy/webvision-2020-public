@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+"""
+"""
+
+__author__ = 'HK,AK'
+__date__ = 'December 2018'
+
 import glob
 import json
 import os
@@ -42,6 +48,8 @@ if __name__ == '__main__':
             file_list.append(file)
 
     logger.debug('Found ' + str(len(file_list)) + ' data files in ' + config["data_folder"] + '... ')
+    if len(file_list) == 0:
+        logger.debug('No training files found, please check data folder: ' + config["data_folder"] + '... ')
 
     model, loss, optimizer = mlp.create_model(config, n_classes)
 

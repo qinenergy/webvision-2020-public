@@ -3,7 +3,7 @@
 """Implementation of training and testing functions for embedding."""
 
 __all__ = ['training', 'load_model', 'forward']
-__author__ = 'AK'
+__author__ = 'HK,AK'
 __date__ = 'August 2018'
 
 import os.path as ops
@@ -125,7 +125,7 @@ def training(config, data, **kwargs):
             save_dict = {'epoch': epoch,
                          'state_dict': model.state_dict(),
                          'optimizer': optimizer.state_dict()}
-            dir_check(ops.join(config["dataset_root"], 'models'))
+            dir_check(config["model_folder"])
             logger.debug(
                 'Saving model to: %s' % ops.join(config["model_folder"], '%s%d.pth.tar' % (config["log_str"], epoch)))
             torch.save(save_dict, ops.join(config["model_folder"], '%s%d.pth.tar' % (config["log_str"], epoch)))
@@ -141,7 +141,7 @@ def training(config, data, **kwargs):
         save_dict = {'epoch': config["epochs"],
                      'state_dict': model.state_dict(),
                      'optimizer': optimizer.state_dict()}
-        dir_check(ops.join(config["dataset_root"], 'models'))
+        dir_check(config["model_folder"])
         logger.debug(
             'Saving model to: %s' % ops.join(config["model_folder"], '%s%d.pth.tar' % (config["log_str"], epoch)))
         torch.save(save_dict, ops.join(config["model_folder"], '%s%d.pth.tar' % (config["log_str"], epoch)))

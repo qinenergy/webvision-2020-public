@@ -1,6 +1,6 @@
 {
   "dataset_root": "/my/data/folder/",
-  "data_folder": "/my/data/folder/train/rgb_flow_numpy",
+  "data_folder": "/my/data/folder/train/packed_numpy_new_rgb_flow",
   "label_idx_file": "./mapping_without_meta.txt",
   "model_folder": "/my/data/folder/models_files",
   "n_classes": 513,
@@ -26,8 +26,9 @@
   "prefix": "model_",
   "test_epoch": 0,
   "get_cond_probs": 1,
-  "out_probs": "/my/data/folder/out_probs_dim2048_100_0",
-  "out_segmentation": "/my/data/folder/segmentation_dim2048_100_0",
+  "resume_str": "",
+  "out_probs": "/my/data/folder/out_probs_dim2048",
+  "out_segmentation": "/my/data/folder/segmentation_dim2048",
   "test_feat": "/my/data/folder/test/features",
   "transcripts": "/my/data/folder/test/transcripts",
   "gt": "/my/data/folder/test/groundTruth"

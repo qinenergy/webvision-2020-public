@@ -3,7 +3,7 @@
 """
 """
 
-__author__ = 'AK'
+__author__ = 'HK,AK'
 __date__ = 'December 2018'
 
 import json
@@ -20,8 +20,9 @@ from utils.utils import dir_check, logger_setup
 
 
 class SaveProbsMP:
-    def __init__(self, config, model, dataset):
+    def __init__(self, config, model, dataset, folder_probs):
         self.config = config
+        self.folder_probs = folder_probs
         ctx = mp.get_context('spawn')
         self._queue = ctx.Queue()
         torch.manual_seed(self.config["seed"])
@@ -73,7 +74,8 @@ class SaveProbsMP:
 
             output = np.exp(log_probs)
 
-        np.save(ops.join(self.config["dataset_root"], self.config["out_probs"], name), output)
+        dir_check(folder_probs)
+        np.save(ops.join(folder_probs, name), output)
 
     def save_probs_queue(self):
         while not self._queue.empty():
@@ -94,12 +96,12 @@ class SaveProbsMP:
             p.join()
 
 
-def save_mp(config):
+def save_mp(config, folder_probs):
     logger.debug('Multiprocessing: forward data and save probabilities')
     dataset = TestDataset(config)
     model, loss, optimizer = mlp.create_model(config, n_classes=513)
     model.load_state_dict(load_model(config, epoch=config["test_epoch"]))
-    save_item = SaveProbsMP(config, model, dataset)
+    save_item = SaveProbsMP(config, model, dataset, folder_probs)
     save_item.save_probs_mp()
 
 
@@ -133,15 +135,25 @@ if __name__ == '__main__':
     print(config["out_probs"])
     logger_setup(config)
 
-    # sample code for computing output probabilities for every two epochs int the range of 0-50
-    len_last_str = 2
+    # create dir if needed
+    dir_check(ops.join(config["out_probs"]))
+
+    # sample code for computing output probabilities for every two epochs in the range of 0-50
+    len_last_str = 0
+    epochs_processed = []
     for i in range(0, 50, 2):
         config["test_epoch"] = i
-        config["out_probs"]= config["out_probs"][:-len_last_str]+"_" + str(i)
-        config["out_segmentation"] = config["out_segmentation"][:-len_last_str]+"_" + str(i)
-        len_last_str = len("_" + str(i))
+        folder_probs= ops.join(config["out_probs"], str(config["test_epoch"]))
+        len_last_str = len(str(i))
 
         logger_setup(config)
-        save_mp(config)
 
+        try:
+            save_mp(config, folder_probs)
+            epochs_processed.append(i)
+        except:
+            break;
+
+    logger.debug('Epochs processed: ')
+    logger.debug(epochs_processed)
     print('Done!')
