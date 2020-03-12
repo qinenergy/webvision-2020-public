@@ -3,11 +3,7 @@
 
 The benchmark comprises a vanilla baseline implementation of the training and evaluation with precomputed features in pytorch. 
 
-- Please first download the training data here:
-https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/train
-
-- ... and the respective test data here:
-https://github.com/hildekuehne/Weak_YouTube_dataset/tree/master/test
+- Please first download the data as described here:
 
 - Unpack the data into a data folder e.g. /my/data/folder/
 
@@ -50,7 +46,7 @@ The function can further make use for the class prior from training to compute t
 
 #### Prepare challenge submission
 
-You can also use the output of that function for the challenge submission.
+You can also use the output of that function for the challenge submission. A detailed description is given here:
 
 
 ## Testing
@@ -74,17 +70,12 @@ The here provided testing routine is run "as is" on the evaluation server.
 
 ## Challenge Data
 
-The data folder comprises explanation and the download script for the challenge test data: [./data](./data)
-
 To give you an idea how the the dataset test data and the challenge test data compare on the vanilla benchmark, we run a short evaluation with the same model on both data (trained over 50 epochs, 2048 dim embedding layer):
 
 ![Comparison](https://hildekuehne.github.io/img/comp_test_challenge.png)
 
-You can see that the challenge data did a bit better in our first vanilla test than the original test dataset, but results are comparable.
+You can see that the challenge data did a bit better in the vanilla test than the original test dataset, but results are comparable.
 
-## Submission
-
-Details for submission will be announced soon!
 
 
 
